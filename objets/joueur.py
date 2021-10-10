@@ -1,6 +1,7 @@
 class Joueur:
 
-    def __init__(self,vie,mana,force,defence,vitesse,inventaire,invspecial):
+    def __init__(self,nom,vie,mana,force,defence,vitesse,inventaire,invspecial):
+        self.nom = nom
         self.pv = vie               #Vie du personnage
         self.mana = mana            #Energie pour les actions spécales
         self.force = force          #Impacte les dégats
@@ -14,16 +15,17 @@ class Joueur:
             return True
         return False
 
-def assigner_classe(classe):
+def assigner_classe(classe,nom):
     if classe == "Guerrier":
         return Joueur(
-        vie=200
-        mana=75
-        force = 150
-        defence=120
-        vitesse=50
+        nom = nom,
+        vie=100,
+        mana=100,
+        force = 100,
+        defence=100,
+        vitesse=100,
         inventaire=[
 
-            ]
-        invspecial = None
+            ],
+        invspecial = None,
         )

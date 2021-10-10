@@ -16,10 +16,12 @@ def main():         #Fonction Principale
         choix_joueur = input()
 
         if choix_joueur == "1":
-            assigner_classe("Guerrier")
+            nom = input("Quel est votre nom:")
+            Player = assigner_classe("Guerrier",nom) #Crée le Joueur
+            break       #Brise la boucle
         else:
             print("Veuiller entrer un numero valide(1)")
-
+    print(Player.nom)
     input("Fin programme")
 
 if __name__ == "__main__":
