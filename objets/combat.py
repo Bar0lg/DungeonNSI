@@ -12,9 +12,18 @@ import copy
 
 class Combat_Class:
 
+    def Attack(self,Attaquant,defenceur):
+        """
+            Pour le calcul de degats j'utilise la formule de degats de PokemonGo
+            qui est Degats = (0.5*Arme*Attaque/Defance)+1
+            https://bulbapedia.bulbagarden.net/wiki/Damage
+        """
+
+
+
     def Fuite(self,Joueur,monstre):
         """
-            Ce script calcul les chances de fuite du Joueur
+            Ce script calcule les chances de fuite du Joueur
             Pour cela j'utilise le meme algoritme de fuite que les jeux pokemon
             de 3eme et 4 eme generation (https://bulbapedia.bulbagarden.net/wiki/Escape)
             Renvoie True en cas de reussite et False en cas de defaite
@@ -51,7 +60,7 @@ def combat_Fontion(Joueur,monstre):
 
             if choix_joueur_combat == "0":  #affiche les stats du jour et du monstre
                 print("""---%s--------------
-vie:%s for:%s mana:%s def:%s vit:%s"""%(Joueur.nom,Joueur.pv,Joueur.force,Joueur.mana,Joueur.defence,Joueur.vitesse,))
+vie:%s for:%s mana:%s/%s def:%s vit:%s"""%(Joueur.nom,Joueur.pv,Joueur.force,Joueur.mana,Joueur.manamax,Joueur.defence,Joueur.vitesse,))
                 print("""---%s--------------
 vie:%s for:%s def:%s vit:%s"""%(monstre.nom,monstre.pv,monstre.force,monstre.defence,monstre.vitesse,))
                 input()

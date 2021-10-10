@@ -27,6 +27,6 @@ class monstre:
 
 
 def generer_liste_monstre():
-    Dummy = monstre("Dummy","Un mostre Test",1,5,10,10,10,100,10)
+    Dummy = monstre("Dummy","Un mostre Test",1,5,10,10,10,10,10)
 
     return [Dummy]
