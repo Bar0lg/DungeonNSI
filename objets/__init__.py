@@ -2,4 +2,4 @@
 
 
 
-Il contient celui du joueur, monstres"""
+Il contient celui du joueur, monstres, Combat"""

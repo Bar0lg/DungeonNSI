@@ -1,6 +1,8 @@
 #Comme le code du jouer et du monstre est tres similaire je commanterais que
 #se qui change par rapport a l'objet Joueur
 
+import random
+import copy
 
 
 class monstre:
@@ -25,6 +27,6 @@ class monstre:
 
 
 def generer_liste_monstre():
-    Dummy = monstre("Dummy","Un mostre Test",1,5,10,10,10,10,10)
+    Dummy = monstre("Dummy","Un mostre Test",1,5,10,10,10,100,10)
 
     return [Dummy]

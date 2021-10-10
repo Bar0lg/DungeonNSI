@@ -1,3 +1,6 @@
+import random
+import copy
+
 class Joueur:
 
     def __init__(self,nom,vie,mana,force,defence,vitesse,inventaire,invspecial):
@@ -23,7 +26,7 @@ def assigner_classe(classe,nom):
         mana=100,
         force = 100,
         defence=100,
-        vitesse=100,
+        vitesse=1,
         inventaire=[
 
             ],

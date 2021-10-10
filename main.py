@@ -5,10 +5,14 @@
 #Ceci est le fichier qu'on lance pour lancer le jeu
 
 import random
+import copy #Cette librairie a la commade deepcopy() qui me permet de faire une vraie copie d'un objet se qui me permaettra de modifier la copie sans affecter l'original
+
+
 from objets.joueur import *     #Importe l'objet du Joueur + commande assigner_classe
 from objets.monstres import *   #Importe mporte l'objet du Joueur + commande generer_liste_monstre
+from objets.combat import *      #Importe Tout ce qui est lié au combat
 
-import copy #Cette librairie a la commade deepcopy() qui me permet de faire une vraie copie d'un objet se qui me permaettra de modifier la copie sans affecter l'original
+
 
 
 def main():         #Fonction Principale
@@ -29,7 +33,7 @@ def main():         #Fonction Principale
 
 
 
-    print(Monstres)
+    combat_Fontion(Player,Monstres[0])
     input("Fin programme")
 
 
