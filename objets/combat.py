@@ -68,6 +68,7 @@ def combat_Fontion(Joueur,monstre_modele):
             return False
         elif monstre.isDead()==True:
             print("%s meurt"%(monstre.nom))
+            Joueur.Ajoutexp(monstre.exp)    #Donne au joueur de l'exp pour avoir tué le monstre
             return True
 
         else:

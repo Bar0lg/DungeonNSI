@@ -35,12 +35,9 @@ def main():         #Fonction Principale
             print("Veuiller entrer un numero valide(1)")
 
     Player.montreStats()
-    print(Player.armure.nom)
-    Player.EquipArmure(liste_armures[1])
+    Player.Ajoutexp(5)
     Player.montreStats()
-    Player.montreStats()
-    print(Player.arme.nom)
-    Player.EquipArme(liste_armes[1])
+    Player.Ajoutexp(7)
     Player.montreStats()
     input("Fin programme")
 
