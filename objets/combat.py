@@ -14,11 +14,13 @@ class Combat_Class:
 
     def Attack(self,Attaquant,defenceur):
         """
-            Pour le calcul de degats j'utilise la formule de degats de PokemonGo
-            qui est Degats = (0.5*Arme*Attaque/Defance)+1
-            https://bulbapedia.bulbagarden.net/wiki/Damage
+            L'algoritme de combat se fait comme sa: Degats = Attaque/Defance + Attaque*random(0.1 et 0.4)
         """
-
+        Degats = round(Attaquant.force /defenceur.defence + Attaquant.force * random.uniform(0.1,0.3))
+        print("%s attaque %s infligant %s degats!!"%(Attaquant.nom,defenceur.nom,Degats))
+        defenceur.pv -= Degats
+        input()
+        return None
 
 
     def Fuite(self,Joueur,monstre):
@@ -38,10 +40,23 @@ class Combat_Class:
             else:
                 return False
 
+    def quiAttaquePremier(self,Joueur,monstre):
+        """
+            Celuit qui attaque en premier est celuit qui as le plus de vitesse des deux
+            S'il ont la meme vitesse c'est aléatoire
+            Retourne 0 si le joueur commance
+            Retourne 1 si le monstre commance
+        """
+        if Joueur.vitesse > monstre.vitesse:
+            return 0
+        elif Joueur.vitesse < monstre.vitesse:
+            return 1
+        else:
+            return random.randint(0,1)
 
 
-
-def combat_Fontion(Joueur,monstre):
+def combat_Fontion(Joueur,monstre_modele):
+    monstre = copy.deepcopy(monstre_modele) #Cree une copie du modèle du monstre
     Combat = Combat_Class()
     print("Vous affronter un %s \n" % (monstre.nom))  #Affiche nom
     print(monstre.description + "\n")                          #Et description du monstre
@@ -49,8 +64,10 @@ def combat_Fontion(Joueur,monstre):
     while True:#Boucle de combat
         #Verifie si l'un des 2 est mort
         if Joueur.isDead() == True:
+            print("Vous mourrez")
             return False
         elif monstre.isDead()==True:
+            print("%s meurt"%(monstre.nom))
             return True
 
         else:
@@ -58,7 +75,7 @@ def combat_Fontion(Joueur,monstre):
             print("Que voulez vous faire \n\n0)Voir les stats\n1)Attaquer\n2)Special\n3)Objet\n4)Fuite")
             choix_joueur_combat = str(input())
 
-            if choix_joueur_combat == "0":  #affiche les stats du jour et du monstre
+            if choix_joueur_combat == "0":  #Affiche les stats du jour et du monstre
                 print("""---%s--------------
 vie:%s for:%s mana:%s/%s def:%s vit:%s"""%(Joueur.nom,Joueur.pv,Joueur.force,Joueur.mana,Joueur.manamax,Joueur.defence,Joueur.vitesse,))
                 print("""---%s--------------
@@ -69,7 +86,13 @@ vie:%s for:%s def:%s vit:%s"""%(monstre.nom,monstre.pv,monstre.force,monstre.def
 
 
             elif choix_joueur_combat == "1":
-                print("Att")
+                ordre = quiAttaquePremier(Joueur,monstre) #Detemine l'ordre
+                if ordre == 0:
+                    Combat.Attack(Joueur,monstre)   #Attaque du joueur
+                    Combat.Attack(monstre,Joueur)   #Attaque du monstre
+                else:
+                    Combat.Attack(monstre,Joueur)   #Attaque du monstre
+                    Combat.Attack(Joueur,monstre)   #Attaque du joueur
 
 
 

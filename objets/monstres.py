@@ -12,6 +12,7 @@ class monstre:
         self.description = description  #description du monstre
         self.levelmin = levelmin        #Niveau minimum ou le monstre peut etre trouvé
         self.levelmax = levelmax        #Niveau maxmum ou le monstre peut etre trouvé
+        self.pvmax = vie
         self.pv = vie
         self.force = force
         self.defence = defence
@@ -27,6 +28,6 @@ class monstre:
 
 
 def generer_liste_monstre():
-    Dummy = monstre("Dummy","Un mostre Test",1,5,10,10,10,10,10)
+    Dummy = monstre("Dummy","Un mostre Test",1,5,100,20,35,10,10)
 
     return [Dummy]

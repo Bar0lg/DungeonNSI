@@ -3,10 +3,11 @@ import copy
 
 class Joueur:
 
-    def __init__(self,nom,vie,manamax,mana,force,defence,vitesse,inventaire,invspecial,arme,armure):
+    def __init__(self,nom,vie,mana,force,defence,vitesse,inventaire,invspecial,arme,armure):
         self.nom = nom
+        self.pvmax = vie            #Vie maximale du personnage
         self.pv = vie               #Vie du personnage
-        self.manamax = manamax      #Energie max pour les actions spécales
+        self.manamax = mana         #Energie max pour les actions spécales
         self.mana = mana            #Energie pour les actions spécales
         self.force = force          #Impacte les dégats
         self.defence = defence      #Impacte le nb de degats recus
@@ -14,7 +15,7 @@ class Joueur:
         self.Inv = inventaire       #L'inventaire du joueur
         self.inv_spe = invspecial   #Iventaire pour les actions spéciales
         self.arme = arme            #L'arme du joueur
-        self.armure = armures       #L'armure du joueur
+        self.armure = armure        #L'armure du joueur
 
     def isDead(self):               #Vérifie si le joueur est mort
         if self.pv <= 0:
@@ -34,4 +35,6 @@ def assigner_classe(classe,nom):
 
             ],
         invspecial = None,
-        )
+
+        arme = None,
+        armure = None)
