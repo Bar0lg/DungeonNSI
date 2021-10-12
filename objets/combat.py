@@ -73,20 +73,18 @@ def combat_Fontion(Joueur,monstre_modele):
         else:
             #Demande au joueur ce qu'il veut faire
             print("Que voulez vous faire \n\n0)Voir les stats\n1)Attaquer\n2)Special\n3)Objet\n4)Fuite")
-            choix_joueur_combat = str(input())
+            choix_joueur_combat = str(input(">"))
 
             if choix_joueur_combat == "0":  #Affiche les stats du jour et du monstre
-                print("""---%s--------------
-vie:%s for:%s mana:%s/%s def:%s vit:%s"""%(Joueur.nom,Joueur.pv,Joueur.force,Joueur.mana,Joueur.manamax,Joueur.defence,Joueur.vitesse,))
-                print("""---%s--------------
-vie:%s for:%s def:%s vit:%s"""%(monstre.nom,monstre.pv,monstre.force,monstre.defence,monstre.vitesse,))
+                print("""---%s--------------\nvie:%s/%s for:%s mana:%s/%s def:%s vit:%s"""%(Joueur.nom,Joueur.pv,Joueur.pvmax,Joueur.force,Joueur.mana,Joueur.manamax,Joueur.defence,Joueur.vitesse,))
+                print("""---%s--------------\nvie:%s/%s for:%s def:%s vit:%s"""%(monstre.nom,monstre.pv,monstre.pvmax,monstre.force,monstre.defence,monstre.vitesse,))
                 input()
 
 
 
 
             elif choix_joueur_combat == "1":
-                ordre = quiAttaquePremier(Joueur,monstre) #Detemine l'ordre
+                ordre = Combat.quiAttaquePremier(Joueur,monstre) #Detemine l'ordre
                 if ordre == 0:
                     Combat.Attack(Joueur,monstre)   #Attaque du joueur
                     Combat.Attack(monstre,Joueur)   #Attaque du monstre
