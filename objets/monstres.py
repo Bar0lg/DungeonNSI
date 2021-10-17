@@ -30,4 +30,19 @@ class monstre:
 def generer_liste_monstre():
     Dummy = monstre("Dummy","Un mostre Test",1,5,100,20,35,10,10)
 
+
     return [Dummy]
+
+def choisir_Monstre_Aleatoire(liste_monstre,PROFONDEUR):
+    """
+        Ce script choisit un monstre aléatoire de la liste et verifie s'il
+        correspond a la profondeur actuelle
+        Si oui le script retourne le monstres
+        Si non le script rechoisis un mosnstre
+    """
+    while True:
+        monstre = random.choice(liste_monstre)
+        if (monstre.levelmin <= PROFONDEUR) and (monstre.levelmax >= PROFONDEUR):
+            return monstre
+        else:
+            continue

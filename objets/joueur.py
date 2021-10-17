@@ -3,7 +3,7 @@ import copy
 
 class Joueur:
 
-    def __init__(self,nom,vie,mana,force,defence,vitesse,inventaire,invspecial,arme,armure):
+    def __init__(self,nom,vie,mana,force,defence,vitesse,arme,armure):
         self.nom = nom
         self.pvmax = vie                            #Vie maximale du personnage
         self.pv = vie                               #Vie du personnage
@@ -12,8 +12,6 @@ class Joueur:
         self.force = force          + arme.modforce #Impacte les dégats
         self.defence = defence      + armure.moddef #Impacte le nb de degats recus
         self.vitesse = vitesse      + armure.modvit #Impacte l'esquive + l'ordre des tours
-        self.Inv = inventaire                       #L'inventaire du joueur
-        self.inv_spe = invspecial                   #Iventaire pour les actions spéciales
         self.arme = arme                            #L'arme du joueur
         self.armure = armure                        #L'armure du joueur
         self.explvl = 1                             #Niveau du personnage
@@ -122,10 +120,6 @@ def assigner_classe(classe,nom,liste_armes,liste_armures):
         force = 50,
         defence=50,
         vitesse=50,
-        inventaire=[
-
-            ],
-        invspecial = None,
 
         arme = liste_armes[0],
         armure = liste_armures[0])

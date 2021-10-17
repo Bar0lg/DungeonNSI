@@ -14,6 +14,9 @@ from objets.combat import *         #Importe Tout ce qui est lié au combat
 from objets.armes_armures import *  #Importe les armes et armures
 
 
+PROFONDEUR = 4
+Niv_par_pronfondeur = 5
+
 
 def main():         #Fonction Principale
     Monstres = generer_liste_monstre()
@@ -34,16 +37,41 @@ def main():         #Fonction Principale
         else:
             print("Veuiller entrer un numero valide(1)")
 
-    Player.montreStats()
-    Player.Ajoutexp(5)
-    Player.montreStats()
-    Player.Ajoutexp(7)
-    Player.montreStats()
-    input("Fin programme")
+    print("Vous entrez dans le donjon de la mort a la recherche de l'amullete de Yandor")
+
+    #Boucle principale
+
+    for i in range(1,PROFONDEUR):
+        print("Vous entrez dans le niveau %s"%(i))
+        input()
+        for k in range(Niv_par_pronfondeur):
+            print("Vous entrez dans une salle...")
+            input()
+            monstre_a_affronter = choisir_Monstre_Aleatoire(Monstres,i)
+            print("Un %s apparait"%(monstre_a_affronter.nom))
+            res_combat = combat_Fontion(Player,monstre_a_affronter)
 
 
+            if res_combat == False: #Si le joueur meurt
+                print("Vous n'avez pas réussit a trouver l'ammulette")
+                return None #Fait sortir du jeu
 
-
+            print("Vous entrez dans une salle...")
+            input()
+            print("Deux objets s'offrent a vous mais vous en pouvez en prendre qu'un:")
+            obj1 = random.choice(liste_armes+liste_armures)
+            obj2 = random.choice(liste_armes+liste_armures)
+            print("1)%s \n\n2)%s"%(obj1.nom,obj2.nom))
+            while True:
+                choix_joueur = input(">")
+                if choix_joueur == "1":
+                    pass
+                elif choix_joueur == "2":
+                    pass
+                else:
+                    print("Veuiller entrer un numero valide(1,2)")
+        print("Vous trouver un escalier pour le niveau %s \n Appuyer sur entrer"%(i+1))
+        input()
 
 
 

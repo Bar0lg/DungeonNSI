@@ -65,6 +65,7 @@ def combat_Fontion(Joueur,monstre_modele):
         #Verifie si l'un des 2 est mort
         if Joueur.isDead() == True:
             print("Vous mourrez")
+            input()
             return False
         elif monstre.isDead()==True:
             print("%s meurt"%(monstre.nom))
@@ -73,7 +74,7 @@ def combat_Fontion(Joueur,monstre_modele):
 
         else:
             #Demande au joueur ce qu'il veut faire
-            print("Que voulez vous faire \n\n0)Voir les stats\n1)Attaquer\n2)Special\n3)Objet\n4)Fuite")
+            print("Que voulez vous faire \n\n0)Voir les stats\n1)Attaquer\n2)Special\n3)Fuite")
             choix_joueur_combat = str(input(">"))
 
             if choix_joueur_combat == "0":  #Affiche les stats du jour et du monstre
@@ -103,17 +104,12 @@ def combat_Fontion(Joueur,monstre_modele):
 
 
             elif choix_joueur_combat == "3":
-                print("Item")
-
-
-
-
-            elif choix_joueur_combat == "4":
                 if Combat.Fuite(Joueur,monstre) == True:
                     print("Vous reussier a vous enfuir")
                     return True #Le combat se finit
                 else:
                     print("Vous echouer a vous enfuir")
+                    Combat.Attack(monstre,Joueur)
 
 
 
@@ -121,4 +117,4 @@ def combat_Fontion(Joueur,monstre_modele):
 
 
             else:
-                print("Veuller choisir un numero(0,1,2,3,4)")
+                print("Veuller choisir un numero(0,1,2,3)")
