@@ -14,14 +14,57 @@ class Combat_Class:
 
     def Attack(self,Attaquant,defenceur):
         """
-            L'algoritme de combat se fait comme sa: Degats = Attaque/Defance + Attaque*random(0.1 et 0.4)
+            L'algoritme de combat se fait comme sa: Degats = Attaque/Defance + Attaque*random(0.05 et 0.1)
         """
-        Degats = round(Attaquant.force /defenceur.defence + Attaquant.force * random.uniform(0.1,0.3))
+        Degats = round(Attaquant.force /defenceur.defence + Attaquant.force * random.uniform(0.05,0.1))
         print("%s attaque %s infligant %s degats!!"%(Attaquant.nom,defenceur.nom,Degats))
         defenceur.pv -= Degats
         time.sleep(1)
         return None
 
+    def Special(self,Joueur,monstre):
+        """
+            Special est une action unique a chaque classe
+            Guerrier:Attaque en ayant une defance amélioré (Mais attaque en dernier)
+            Mage:Attaque tres puissante (Mais attaque en dernier)
+            Archer:Attaque sans que le monstre attaque derriere
+            Chaque Special coute 30 mana
+            Renvoie rien
+        """
+        if Joueur.mana < 30:    #Fait passer le tour si le jour n'a pas assez de mana
+            print("Vous echouer a lancer votre attque sepcial par manque d'energie")
+            time.sleep(1)
+            return None
+
+        #Special du guerrier
+        elif Joueur.classe == "Guerrier":
+            print("Vous brandez votre bouclier!!!!")
+            time.sleep(1)
+            Joueur.defence *= 10    #Multiplie la defance du Joueur par 10
+            self.Attack(monstre,Joueur)
+            Joueur.defence //= 10    #Remet La defance du joueur a la normalle
+            self.Attack(Joueur,monstre)
+            Joueur.mana -= 30       #Reduit la mana du joueur de 30
+            return None
+
+        #Special du Mage
+        elif Joueur.classe == "Mage":
+            self.Attack(monstre,Joueur)
+            print("Vous Invoquer une boule de feu!!!")
+            time.sleep(1)
+            Joueur.force *= 5      #Multiplie la force du Joueur par 10
+            self.Attack(Joueur,monstre)
+            Joueur.force //= 5    #Remet la force du joueur a la normalle
+            Joueur.mana -= 30       #Reduit la mana du joueur de 30
+            return None
+
+        #Special du Mage
+        elif Joueur.classe == "Archer":
+            print("Avant meme que l'ennemi réagisse vous lui infliger une attaque éclair!!!")
+            time.sleep(1)
+            self.Attack(Joueur,monstre)
+            Joueur.mana -= 30       #Reduit la mana du joueur de 30
+            return None
 
     def Fuite(self,Joueur,monstre):
         """
@@ -70,6 +113,8 @@ def combat_Fontion(Joueur,monstre_modele):
         elif monstre.isDead()==True:
             print("%s meurt"%(monstre.nom))
             Joueur.Ajoutexp(monstre.exp)    #Donne au joueur de l'exp pour avoir tué le monstre
+            Joueur.pv = min(Joueur.pv + 10,Joueur.pvmax)        #Redonne 10 pv au joueur et 20 mana
+            Joueur.mana = min(Joueur.mana + 20 ,Joueur.manamax)
             return True
 
         else:
@@ -94,14 +139,8 @@ def combat_Fontion(Joueur,monstre_modele):
                     Combat.Attack(monstre,Joueur)   #Attaque du monstre
                     Combat.Attack(Joueur,monstre)   #Attaque du joueur
 
-
-
-
-            elif choix_joueur_combat == "2":
-                print("spe")
-
-
-
+            elif choix_joueur_combat == "2":    #Lance l'attaque special du joueur
+                Combat.Special(Joueur,monstre)
 
             elif choix_joueur_combat == "3":
                 if Combat.Fuite(Joueur,monstre) == True:
@@ -110,11 +149,6 @@ def combat_Fontion(Joueur,monstre_modele):
                 else:
                     print("Vous echouer a vous enfuir")
                     Combat.Attack(monstre,Joueur)
-
-
-
-
-
 
             else:
                 print("Veuller choisir un numero(0,1,2,3)")

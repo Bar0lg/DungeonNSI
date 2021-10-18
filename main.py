@@ -14,8 +14,8 @@ from objets.combat import *         #Importe Tout ce qui est lié au combat
 from objets.armes_armures import *  #Importe les armes et armures
 
 
-NIVEAU = 0              #Definit le nb de Niveau dans le jeu
-COMBAT_PAR_NIVEAU = 0     #Definit le nombre de combat dans un niveau
+NIVEAU = 5              #Definit le nb de Niveau dans le jeu
+COMBAT_PAR_NIVEAU = 5     #Definit le nombre de combat dans un niveau
 
 
 def main():         #Fonction Principale
@@ -25,7 +25,7 @@ def main():         #Fonction Principale
     BOSS = Monstres[0]  #Definit quel monstre est le boss final du jeu
     print("Bienvenue dans DongeonNSI \n\n")
     time.sleep(1)
-    print("Veuiller choisir votre classe \n\n1)Guerrier")
+    print("Veuiller choisir votre classe \n\n1)Guerrier\n\n2)Mage\n\n3)Archer")
 
     while True:#Boucle jusqua ce que le joueur prend une classe
         choix_joueur = input(">")
@@ -34,6 +34,14 @@ def main():         #Fonction Principale
             nom = str(input("Quel est votre nom:"))
             Player = assigner_classe("Guerrier",nom,liste_armes,liste_armures) #Crée le Joueur
             break       #Brise la boucle
+        elif choix_joueur == "2":
+            nom = str(input("Quel est votre nom:"))
+            Player = assigner_classe("Mage",nom,liste_armes,liste_armures) #Crée le Joueur
+            break
+        elif choix_joueur == "3":
+            nom = str(input("Quel est votre nom:"))
+            Player = assigner_classe("Archer",nom,liste_armes,liste_armures) #Crée le Joueur
+            break
         else:
             print("Veuiller entrer un numero valide(1)")
 
@@ -65,10 +73,10 @@ def main():         #Fonction Principale
 
             print("Vous entrez dans une salle...")
             time.sleep(1)
-            print("Deux objets s'offrent a vous mais vous en pouvez en prendre qu'un:")
+            print("Deux objets s'offrent a vous mais vous en pouvez en prendre qu'un(Vous pouvez aussi vous reposer):")
             obj1 = random.choice(liste_armes+liste_armures)
             obj2 = random.choice(liste_armes+liste_armures)
-            print("1)%s \n\n2)%s"%(obj1.nom,obj2.nom))
+            print("1)%s \n\n2)%s\n\n3)Vous reposer"%(obj1.nom,obj2.nom))
 
 
             while True:                         #Boucle de choix
@@ -87,8 +95,15 @@ def main():         #Fonction Principale
                     else:                       #Si c'est une armure
                         Player.EquipArmure(obj2)
                         break                   #Casse la boucle
+                elif choix_joueur == "3":
+                    #Redonne au joueur 30 vie et 50 mana
+                    print("Vous prenez une pause...")
+                    time.sleep(3)
+                    Player.pv = min(Player.pv + 30,Player.pvmax)
+                    Player.mana = min(Player.mana + 50 ,Player.manamax)
+                    break #Casse la boucle
                 else:
-                    print("Veuiller entrer un numero valide(1,2)")
+                    print("Veuiller entrer un numero valide(1,2,3)")
         print("Vous trouver un escalier pour le niveau %s \n"%(i+1))
         time.sleep(1)
 

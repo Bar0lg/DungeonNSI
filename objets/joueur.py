@@ -93,7 +93,7 @@ class Joueur:
         """
             Ce script ajoute de l'experiance au personnage
             et si'il depasse le cap d'experiance ce script lr fait monter au niveau superieur
-            quand le joueur augemente de niveau il gagne entre 1 et 5 points dans chaque stats
+            quand le joueur augemente de niveau il gagne entre 1 et 8 points dans chaque stats
             et le prochain cap est 2.5 fois plus grand que le précédent
             Ce script ne retourne aucune valeur
         """
@@ -102,11 +102,11 @@ class Joueur:
         self.exp += exp_gagne
         if self.exp >= self.expcap: #Si l'xp du joueur est asser haute pour monter de niveau
             print("Vous monter de niveau")
-            self.pv    += random.randint(1,5)
-            self.force  += random.randint(1,5)
-            self.manamax+= random.randint(1,5)
-            self.defence+= random.randint(1,5)
-            self.vitesse+= random.randint(1,5)
+            self.pv     += random.randint(1,8)
+            self.force  += random.randint(1,8)
+            self.manamax+= random.randint(1,8)
+            self.defence+= random.randint(1,8)
+            self.vitesse+= random.randint(1,8)
             self.explvl += 1 #Le joueur gagne un Niveau
             self.expcap = self.expcap * 2.5 #On met en place le prochain cap d'Experiance
             time.sleep(1)
@@ -117,12 +117,33 @@ def assigner_classe(classe,nom,liste_armes,liste_armures):
     if classe == "Guerrier":
         return Joueur(
         nom = nom,
-        classe = classe, 
-        vie=100,
-        mana=50,
+        classe = classe,
+        vie=250,
+        mana=100,
+        force = 75,
+        defence=75,
+        vitesse=25,
+        arme = liste_armes[0],
+        armure = liste_armures[0])
+    elif classe == "Mage":
+        return Joueur(
+        nom = nom,
+        classe = classe,
+        vie=150,
+        mana=300,
+        force = 25,
+        defence=25,
+        vitesse=50,
+        arme = liste_armes[0],
+        armure = liste_armures[0])
+    elif classe == "Archer":
+        return Joueur(
+        nom = nom,
+        classe = classe,
+        vie=200,
+        mana=150,
         force = 50,
         defence=50,
-        vitesse=50,
-
+        vitesse=100,
         arme = liste_armes[0],
         armure = liste_armures[0])
