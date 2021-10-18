@@ -9,6 +9,7 @@
 
 class Arme:
     def __init__(self,nom,description,modforce,modmana):
+        self.classe = "Arme"
         self.nom = nom
         self.description = description
         self.modforce = modforce        #Modification apporté a la force du personnage
@@ -16,6 +17,7 @@ class Arme:
 
 class Armure:
     def __init__(self,nom,description,moddef,modvit):
+        self.classe = "Armure"
         self.nom = nom
         self.description = description
         self.moddef = moddef            #Modification apporté a la defence du personnage

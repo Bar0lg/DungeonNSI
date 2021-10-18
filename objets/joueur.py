@@ -1,10 +1,12 @@
 import random
 import copy
+import time
 
 class Joueur:
 
-    def __init__(self,nom,vie,mana,force,defence,vitesse,arme,armure):
+    def __init__(self,nom,classe,vie,mana,force,defence,vitesse,arme,armure):
         self.nom = nom
+        self.classe = classe
         self.pvmax = vie                            #Vie maximale du personnage
         self.pv = vie                               #Vie du personnage
         self.manamax = mana         + arme.modmana  #Energie max pour les actions spécales
@@ -30,7 +32,7 @@ class Joueur:
             Ce script ne retourne aucune valeur
         """
         print("""---%s--------------\nvie:%s/%s for:%s mana:%s/%s def:%s vit:%s exp:%s/%s"""%(self.nom,self.pv,self.pvmax,self.force,self.mana,self.manamax,self.defence,self.vitesse,self.exp,self.expcap))
-        input()
+        time.sleep(1)
         return None
 
     def EquipArme(self,arme):
@@ -81,7 +83,7 @@ class Joueur:
                 return None
 
             elif choix_joueur.upper() == "N":
-                print("Vous choisisser de ne pas equiper %s"%(arme.nom))
+                print("Vous choisisser de ne pas equiper %s"%(armure.nom))
                 return None
             else:
                 print("Veuiller ecrire un choix valable (O,N)")
@@ -96,7 +98,7 @@ class Joueur:
             Ce script ne retourne aucune valeur
         """
         print("Vous avez gagne %s exp"%(exp_gagne))
-        input()
+        time.sleep(1)
         self.exp += exp_gagne
         if self.exp >= self.expcap: #Si l'xp du joueur est asser haute pour monter de niveau
             print("Vous monter de niveau")
@@ -107,7 +109,7 @@ class Joueur:
             self.vitesse+= random.randint(1,5)
             self.explvl += 1 #Le joueur gagne un Niveau
             self.expcap = self.expcap * 2.5 #On met en place le prochain cap d'Experiance
-            input()
+            time.sleep(1)
             return None
 
 
@@ -115,6 +117,7 @@ def assigner_classe(classe,nom,liste_armes,liste_armures):
     if classe == "Guerrier":
         return Joueur(
         nom = nom,
+        classe = classe, 
         vie=100,
         mana=50,
         force = 50,

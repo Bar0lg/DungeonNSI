@@ -3,7 +3,7 @@
 
 import random
 import copy
-
+import time
 
 class monstre:
 

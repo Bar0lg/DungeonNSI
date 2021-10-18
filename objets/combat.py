@@ -8,7 +8,7 @@
 
 import random
 import copy
-
+import time
 
 class Combat_Class:
 
@@ -19,7 +19,7 @@ class Combat_Class:
         Degats = round(Attaquant.force /defenceur.defence + Attaquant.force * random.uniform(0.1,0.3))
         print("%s attaque %s infligant %s degats!!"%(Attaquant.nom,defenceur.nom,Degats))
         defenceur.pv -= Degats
-        input()
+        time.sleep(1)
         return None
 
 
@@ -65,7 +65,7 @@ def combat_Fontion(Joueur,monstre_modele):
         #Verifie si l'un des 2 est mort
         if Joueur.isDead() == True:
             print("Vous mourrez")
-            input()
+            time.sleep(1)
             return False
         elif monstre.isDead()==True:
             print("%s meurt"%(monstre.nom))
@@ -80,7 +80,7 @@ def combat_Fontion(Joueur,monstre_modele):
             if choix_joueur_combat == "0":  #Affiche les stats du jour et du monstre
                 print("""---%s--------------\nvie:%s/%s for:%s mana:%s/%s def:%s vit:%s"""%(Joueur.nom,Joueur.pv,Joueur.pvmax,Joueur.force,Joueur.mana,Joueur.manamax,Joueur.defence,Joueur.vitesse,))
                 print("""---%s--------------\nvie:%s/%s for:%s def:%s vit:%s"""%(monstre.nom,monstre.pv,monstre.pvmax,monstre.force,monstre.defence,monstre.vitesse,))
-                input()
+                time.sleep(1)
 
 
 
