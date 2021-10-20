@@ -15,7 +15,7 @@ from objets.armes_armures import *  #Importe les armes et armures
 
 
 NIVEAU = 5                  #Definit le nombre de Niveau dans le jeu
-COMBAT_PAR_NIVEAU = 5       #Definit le nombre de combat dans un niveau
+COMBAT_PAR_NIVEAU = 3       #Definit le nombre de combat dans un niveau
 
 
 def main():         #Fonction Principale
@@ -99,7 +99,7 @@ def main():         #Fonction Principale
                     #Redonne au joueur 30 vie et 50 mana
                     print("Vous prenez une pause...")
                     time.sleep(4)
-                    Player.pv = min(Player.pv + 30,Player.pvmax)
+                    Player.pv = min(Player.pv + 6,Player.pvmax)
                     Player.mana = min(Player.mana + 50 ,Player.manamax)
                     break #Casse la boucle
                 else:

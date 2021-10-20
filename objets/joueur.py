@@ -94,7 +94,7 @@ class Joueur:
             Ce script ajoute de l'experience au personnage
             et s'il depasse le cap d'experience ce script le fait monter au niveau superieur
             quand le joueur augmente de niveau, il gagne entre 1 et 8 points dans chaque stats
-            et le prochain cap est 2.5 fois plus grand que le précédent
+            et le prochain cap est 3 fois plus grand que le précédent
             Ce script ne retourne aucune valeur
         """
         print("Vous avez gagné %s exp"%(exp_gagne))
@@ -102,13 +102,13 @@ class Joueur:
         self.exp += exp_gagne
         if self.exp >= self.expcap: #Si l'xp du joueur est assez haute pour monter de niveau
             print("Vous montez de niveau")
-            self.pv     += random.randint(1,8)
+            self.pvmax  += random.randint(1,8)
             self.force  += random.randint(1,8)
             self.manamax+= random.randint(1,8)
             self.defence+= random.randint(1,8)
             self.vitesse+= random.randint(1,8)
             self.explvl += 1 #Le joueur gagne un Niveau
-            self.expcap = self.expcap * 2.5 #On met en place le prochain cap d'experience
+            self.expcap = self.expcap * 3 #On met en place le prochain cap d'experience
             time.sleep(2)
             return None
 
@@ -118,7 +118,7 @@ def assigner_classe(classe,nom,liste_armes,liste_armures):
         return Joueur(
         nom = nom,
         classe = classe,
-        vie=250,
+        vie=25,
         mana=100,
         force = 75,
         defence=75,
@@ -129,7 +129,7 @@ def assigner_classe(classe,nom,liste_armes,liste_armures):
         return Joueur(
         nom = nom,
         classe = classe,
-        vie=150,
+        vie=15,
         mana=300,
         force = 25,
         defence=25,
@@ -140,7 +140,7 @@ def assigner_classe(classe,nom,liste_armes,liste_armures):
         return Joueur(
         nom = nom,
         classe = classe,
-        vie=200,
+        vie=20,
         mana=150,
         force = 50,
         defence=50,
