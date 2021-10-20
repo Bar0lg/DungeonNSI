@@ -1,7 +1,7 @@
 """
     Ce code crée les armes et armures
-    Les armes modifient la force et la commanterais
-    les armures modifient la defance et vitesse
+    Les armes modifient la force et la mana
+    les armures modifient la défance et vitesse
     gen_list_arme() génère tt les armes
     gen_list_armures() génère tt les armures
 
@@ -12,16 +12,16 @@ class Arme:
         self.classe = "Arme"
         self.nom = nom
         self.description = description
-        self.modforce = modforce        #Modification apporté a la force du personnage
-        self.modmana = modmana          #Modification apporté a la mana du personnage
+        self.modforce = modforce        #Modification apportée à la force du personnage
+        self.modmana = modmana          #Modification apportée à la mana du personnage
 
 class Armure:
     def __init__(self,nom,description,moddef,modvit):
         self.classe = "Armure"
         self.nom = nom
         self.description = description
-        self.moddef = moddef            #Modification apporté a la defence du personnage
-        self.modvit = modvit            #Modification apporté a la vittesse du personnage
+        self.moddef = moddef            #Modification apportée à la defence du personnage
+        self.modvit = modvit            #Modification apportée à la vittesse du personnage
 
 
 def gen_list_arme(): #Genere les armes et les mets dans une liste
@@ -33,5 +33,5 @@ def gen_list_arme(): #Genere les armes et les mets dans une liste
 
 def gen_list_armures():
         Cuir = Armure("Armure en cuir","C'est une armure en cuir usée",5,0)
-        Platine = Armure("Armure en Platine","C'est une magnifique armure faite de Platine",20,-10)
+        Platine = Armure("Armure de Platine","C'est une magnifique armure faite de Platine",20,-10)
         return [Cuir,Platine]

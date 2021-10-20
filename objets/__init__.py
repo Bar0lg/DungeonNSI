@@ -1,5 +1,1 @@
-"""Ce dossier contient l'intégralité des objets du programme.
-
-
-
-Il contient celui du joueur, monstres, Combat"""
+"""Ce dossier contient l'intégralité des objets du programme."""
