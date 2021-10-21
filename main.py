@@ -22,7 +22,7 @@ def main():         #Fonction Principale
     Monstres = generer_liste_monstre()
     liste_armes = gen_list_arme()
     liste_armures = gen_list_armures()
-    BOSS = Monstres[0]  #Definit quel monstre est le boss final du jeu
+    BOSS = Monstres[-1]  #Definit quel monstre est le boss final du jeu
     print("Bienvenue dans Dungeon \n\n")
     time.sleep(2)
     print("Veuillez choisir votre classe \n\n1)Guerrier\n\n2)Mage\n\n3)Archer")
